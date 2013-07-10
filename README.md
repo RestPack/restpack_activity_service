@@ -5,7 +5,7 @@
 
 **Work In Progress**
 
-This gem provides a service for managing lists of activities. It supports full text search, tagging, access control and paging
+This gem provides a service for managing lists of activities. It supports full text search, tagging, access control and paging.
 
 ## Development Setup
 
