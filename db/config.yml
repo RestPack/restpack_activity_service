@@ -13,5 +13,5 @@ test:
   encoding: utf8
   database: restpack_activity_test
   pool: 5
-  username: postgres
+  username:
   password:
