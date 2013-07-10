@@ -3,6 +3,4 @@ rvm:
   - 2.0.0
 env:
   - DATABASE_URL=$(curl http://api.postgression.com)
-before_script:
-  - bundle exec rake db:migrate RAILS_ENV=test
 script: bundle exec rake test

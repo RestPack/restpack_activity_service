@@ -12,6 +12,11 @@ config = YAML.load_file('./db/config.yml')
 p "ENV['DATABASE_URL']: #{ENV['DATABASE_URL']}"
 ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || config['test'])
 
+migrations_path = File.dirname(__FILE__) + "/../db/migrate"
+p migrations_path
+migrator = ActiveRecord::Migrator.new(:up, migrations_path)
+migrator.migrate
+
 DatabaseCleaner.strategy = :transaction
 
 RSpec.configure do |config|
