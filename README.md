@@ -1,29 +1,12 @@
 # RestpackActivity
 
-TODO: Write a gem description
+**Work In Progress**
 
-## Installation
+This gem provides a service which allows your application to provide lists of activities. It supports full text search, tagging, access control and paging.
 
-Add this line to your application's Gemfile:
+## Development Setup
 
-    gem 'restpack_activity'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install restpack_activity
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+1. Install Postgres
+2. rake db:create
+3. rake db:migrate RAILS_ENV=test
+4. rake spec
