@@ -28,6 +28,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "database_cleaner", "~> 1.0.1"
   spec.add_development_dependency "rspec"
-  # spec.add_development_dependency "minitest-reporters", "~> 0.14.20"
-  # spec.add_development_dependency "minitest-implicit-subject"
 end
