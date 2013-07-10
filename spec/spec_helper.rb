@@ -9,6 +9,7 @@ require 'coveralls'
 Coveralls.wear!
 
 config = YAML.load_file('./db/config.yml')
+p "ENV['DATABASE_URL']: #{ENV['DATABASE_URL']}"
 ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || config['test'])
 
 DatabaseCleaner.strategy = :transaction
