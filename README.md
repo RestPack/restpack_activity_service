@@ -11,5 +11,4 @@ This gem provides a service for managing lists of activities. It supports full t
 
 1. Install Postgres
 2. rake db:create
-3. rake db:migrate RAILS_ENV=test
-4. rake spec
+3. rake
