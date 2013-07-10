@@ -1,8 +1,5 @@
 require 'rake/testtask'
-require "standalone_migrations"
 require "restpack_activity"
-
-StandaloneMigrations::Tasks.load_tasks
 
 task :default => :test
 task :test => :spec

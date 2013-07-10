@@ -14,7 +14,7 @@ module RestPack::Services::Activity
     end
 
     def execute
-      scope = RestPack::Models::Activity.scoped
+      scope = RestPack::Models::Activity.all
       scope = scope.where(application_id: application_id)
 
       scope = scope.where(user_id: user_id) if user_id
