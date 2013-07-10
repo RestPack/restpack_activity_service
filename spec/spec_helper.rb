@@ -5,6 +5,8 @@ require 'rspec'
 require 'database_cleaner'
 require 'yaml'
 require 'restpack_activity'
+require 'coveralls'
+Coveralls.wear!
 
 config = YAML.load_file('./db/config.yml')
 ActiveRecord::Base.establish_connection(config['test'])
