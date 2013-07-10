@@ -9,7 +9,7 @@ require 'coveralls'
 Coveralls.wear!
 
 config = YAML.load_file('./db/config.yml')
-ActiveRecord::Base.establish_connection(config['test'])
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || config['test'])
 
 DatabaseCleaner.strategy = :transaction
 

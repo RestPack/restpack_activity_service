@@ -1,6 +1,8 @@
 language: ruby
 rvm:
   - 2.0.0
+env:
+  - DATABASE_URL=$(curl http://api.postgression.com)
 before_script:
   - psql -c 'create database restpack_activity_test;' -U postgres
   - bundle exec rake db:migrate RAILS_ENV=test
