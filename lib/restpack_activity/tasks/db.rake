@@ -12,11 +12,15 @@ namespace :restpack do
   namespace :activity do
     desc "Run any outstanding RestPack::Activity migrations"
     task :migrate => ["connection"] do
-      ActiveRecord::Migration.verbose = true
-      ActiveRecord::Migrator.migrate(File.dirname(__FILE__) + "/../../../db/migrate")
+      source_migrations_path = File.dirname(__FILE__) + "/../../../db/migrate"
+      target_migrations_path = "db/migrate"
 
-      #TODO: GJ: copy migration files to container?
-      #          this would allow rails applications to use rake db:rollback
+      ActiveRecord::Migration.verbose = true
+      ActiveRecord::Migrator.migrate(source_migrations_path)
+
+      if File.directory?(target_migrations_path)
+        FileUtils.cp_r(Dir["#{source_migrations_path}/*"], target_migrations_path)
+      end
     end
 
     task :connection do
