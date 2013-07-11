@@ -21,7 +21,7 @@ namespace :restpack do
 
     task :connection do
       ActiveRecord::Base.logger = Logger.new(STDOUT)
-      config = YAML.load(IO.read('db/config.yml'))
+      config = YAML.load(IO.read('config/database.yml'))
       environment = ENV['RAILS_ENV'] || ENV['DB'] || 'development'
       ActiveRecord::Base.establish_connection config[environment]
     end

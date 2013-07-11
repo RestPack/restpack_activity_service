@@ -8,7 +8,7 @@ require 'restpack_activity'
 require 'coveralls'
 Coveralls.wear!
 
-config = YAML.load_file('./db/config.yml')
+config = YAML.load_file('./config/database.yml')
 ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || config['test'])
 
 migrations_path = File.dirname(__FILE__) + "/../db/migrate"
