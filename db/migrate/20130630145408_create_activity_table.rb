@@ -1,6 +1,9 @@
 class CreateActivityTable < ActiveRecord::Migration
+  def table_name
+    RestPack::Activity.configuration.prefix_table_name(:activities)
+  end
+
   def up
-    table_name = RestPack::Activity.configuration.prefix_table_name(:activities)
     create_table table_name do |t|
       t.integer :application_id
       t.integer :user_id
@@ -10,24 +13,20 @@ class CreateActivityTable < ActiveRecord::Migration
       t.decimal :latitude, precision: 10, scale: 6, null: true
       t.decimal :longitude, precision: 10, scale: 6, null: true
       t.column  :search_vector, 'tsvector'
+      t.json    :data
       t.timestamps
     end
-    add_column(table_name, :data, :json)
 
-    add_index table_name, :tag_list, :using => :gin
-
-    execute "
-      CREATE INDEX #{table_name}_search_idx ON #{table_name} USING gin(search_vector)
-    "
-    execute "
-      CREATE TRIGGER #{table_name}_vector_update BEFORE INSERT OR UPDATE
-      ON #{table_name}
-      FOR EACH ROW EXECUTE PROCEDURE
-        tsvector_update_trigger(search_vector, 'pg_catalog.english',
-          title, content);"
+    execute "CREATE INDEX #{table_name}_tag_list_index ON #{table_name} USING gin(tag_list)"
+    execute "CREATE INDEX #{table_name}_search_index ON #{table_name} USING gin(search_vector)"
+    execute "CREATE TRIGGER #{table_name}_vector_update BEFORE INSERT OR UPDATE
+              ON #{table_name} FOR EACH ROW EXECUTE PROCEDURE
+              tsvector_update_trigger(search_vector, 'pg_catalog.english', title, content);"
   end
 
   def down
-    p "TODO: GJ: down migration"
+    execute "DROP INDEX #{table_name}_tag_list_index"
+    execute "DROP INDEX #{table_name}_search_index"
+    drop_table table_name
   end
 end
