@@ -26,8 +26,4 @@ class CreateActivityTable < ActiveRecord::Migration
         tsvector_update_trigger(search_vector, 'pg_catalog.english',
           title, content);"
   end
-
-  def down
-    #TODO:
-  end
 end

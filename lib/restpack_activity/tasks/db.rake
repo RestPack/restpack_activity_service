@@ -1,7 +1,3 @@
-require "standalone_migrations"
-
-StandaloneMigrations::Tasks.load_tasks
-
 namespace :restpack do
   desc "Run any outstanding RestPack migrations"
   task :migrate do
@@ -20,13 +16,15 @@ namespace :restpack do
       migrator = ActiveRecord::Migrator.new(:up, migrations_path)
       migrator.migrate
 
-      Rake::Task["db:structure:dump"].invoke
+      #TODO: GJ: copy migration files to container?
+      #          this would allow rails applications to use rake db:rollback
     end
 
     task :connection do
       ActiveRecord::Base.logger = Logger.new(STDOUT)
-
-      Rake::Task["standalone:connection"].invoke
+      config = YAML.load(IO.read('db/config.yml'))
+      environment = ENV['RAILS_ENV'] || ENV['DB'] || 'development'
+      ActiveRecord::Base.establish_connection config[environment]
     end
 
     desc "List RestPack::Activity configuration"
