@@ -12,10 +12,15 @@ module RestPack::Services::Activity
       string  :access, empty: true
       float   :latitude
       float   :longitude
+
     end
 
     def execute
       activity = RestPack::Models::Activity.find_by_id_and_application_id(inputs[:id], inputs[:application_id])
+
+      if raw_inputs[:data]
+        inputs[:data] = raw_inputs[:data]
+      end
 
       if activity
         activity.update_attributes(inputs)
