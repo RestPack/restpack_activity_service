@@ -12,7 +12,6 @@ module RestPack::Services::Activity
       string  :access, empty: true
       float   :latitude
       float   :longitude
-
     end
 
     def execute

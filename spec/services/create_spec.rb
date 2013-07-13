@@ -24,10 +24,8 @@ describe RestPack::Services::Activity::Create do
         response.result[:user_id].should == params[:user_id]
         response.result[:content].should == params[:content]
         response.result[:title].should == params[:title]
-        response.result[:coordinates].should == {
-          latitude: 53.180999,
-          longitude: -6.301528
-        }
+        response.result[:latitude].should == 53.180999
+        response.result[:longitude].should == -6.301528
 
         response.result[:tags].should == []
         response.result[:access].should == []
