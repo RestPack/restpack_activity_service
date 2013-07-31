@@ -1,6 +1,6 @@
 require "active_record"
+require "restpack_service"
 require "restpack_serializer"
-require "mutations"
 
 require "restpack_activity/version"
 require "restpack_activity/configuration"
