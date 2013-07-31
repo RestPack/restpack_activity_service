@@ -1,5 +1,5 @@
 module RestPack::Services::Activity
-  class Get < Mutations::Command
+  class Get < RestPack::Service
     required do
       integer :id
       integer :application_id
@@ -14,7 +14,7 @@ module RestPack::Services::Activity
       if activity
         RestPack::Serializers::ActivitySerializer.as_json(activity)
       else
-        add_error(:id, :not_found, "Not Found")
+        status :not_found
       end
     end
   end

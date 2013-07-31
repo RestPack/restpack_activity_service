@@ -1,5 +1,5 @@
 module RestPack::Services::Activity
-  class List < Mutations::Command
+  class List < RestPack::Service
     required do
       integer :application_id
     end

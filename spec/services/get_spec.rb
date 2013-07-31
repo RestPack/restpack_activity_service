@@ -29,10 +29,9 @@ describe RestPack::Services::Activity::Get do
     }}
 
     it 'is unsuccessful' do
-      #TODO: GJ: decide on how we handle 404 in the service layer
       response.success?.should == false
       response.result.should == nil
-      response.errors['id'].should_not == nil
+      response.status.should == :not_found
     end
   end
 end

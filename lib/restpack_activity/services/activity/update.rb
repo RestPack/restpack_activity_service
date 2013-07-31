@@ -1,5 +1,5 @@
 module RestPack::Services::Activity
-  class Update < Mutations::Command
+  class Update < RestPack::Service
     required do
       integer :id
       integer :application_id
@@ -14,16 +14,18 @@ module RestPack::Services::Activity
       float   :longitude
     end
 
+    def init
+      inputs[:data] = raw_inputs[:data] if raw_inputs[:data]
+    end
+
     def execute
       activity = RestPack::Models::Activity.find_by_id_and_application_id(inputs[:id], inputs[:application_id])
-
-      if raw_inputs[:data]
-        inputs[:data] = raw_inputs[:data]
-      end
 
       if activity
         activity.update_attributes(inputs)
         RestPack::Serializers::ActivitySerializer.as_json(activity)
+      else
+        status :not_found
       end
     end
   end

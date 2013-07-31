@@ -1,5 +1,5 @@
 module RestPack::Services::Activity
-  class Create < Mutations::Command
+  class Create < RestPack::Service
     required do
       integer :application_id
       integer :user_id
@@ -14,13 +14,26 @@ module RestPack::Services::Activity
       float   :longitude
     end
 
-    def execute
-      if raw_inputs[:data]
-        inputs[:data] = raw_inputs[:data]
+    def init
+      inputs[:data] = raw_inputs[:data] if raw_inputs[:data]
+
+      if latitude.present? || longitude.present?
+        if latitude.present? != longitude.present?
+          service_error "Both Latitude and Longitude are required"
+        end
       end
 
-      activity = RestPack::Models::Activity.create(inputs)
+      if title == "error"
+        service_error "This is a service error"
+      end
 
+      if title == "custom"
+        field_error :title, "Title should not be 'custom'"
+      end
+    end
+
+    def execute
+      activity = RestPack::Models::Activity.create(inputs)
       RestPack::Serializers::ActivitySerializer.as_json(activity)
     end
   end
