@@ -4,7 +4,7 @@ require_relative 'support/mutations_matchers'
 require 'rspec'
 require 'database_cleaner'
 require 'yaml'
-require 'restpack_activity'
+require 'restpack_activity_service'
 require 'coveralls'
 Coveralls.wear!
 

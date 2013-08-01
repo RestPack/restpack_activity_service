@@ -29,11 +29,11 @@ namespace :restpack do
       ActiveRecord::Base.establish_connection config[environment]
     end
 
-    desc "List RestPack::Activity configuration"
+    desc "List RestPack::Activity::Service configuration"
     task :configuration do
-      p "RestPack::Activity Configuration"
+      p "RestPack::Activity::Service Configuration"
       p "--------------------------------"
-      p "database_table_prefix: #{RestPack::Activity.configuration.database_table_prefix}"
+      p "database_table_prefix: #{RestPack::Activity::Service.configuration.database_table_prefix}"
     end
   end
 end

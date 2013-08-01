@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'restpack_activity/version'
+require 'restpack_activity_service/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "restpack_activity"
-  spec.version       = RestPack::Activity::VERSION
+  spec.name          = "restpack_activity_service"
+  spec.version       = RestPack::Activity::Service::VERSION
   spec.authors       = ["Gavin Joyce"]
   spec.email         = ["gavinjoyce@gmail.com"]
   spec.description   = %q{RestPack Activity Services}

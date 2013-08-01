@@ -2,7 +2,7 @@ test:
   adapter: postgresql
   host: localhost
   encoding: utf8
-  database: restpack_activity_test
+  database: restpack_activity_service_test
   pool: 5
   username:
   password:

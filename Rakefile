@@ -1,5 +1,5 @@
-require 'rake/testtask'
-require "restpack_activity"
+require "rake/testtask"
+require "restpack_activity_service"
 
 task :default => :test
 task :test => :spec

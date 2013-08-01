@@ -1,4 +1,4 @@
-module RestPack::Activity
+module RestPack::Activity::Service
   class Configuration
     attr_accessor :database_table_prefix, :application_id
 
