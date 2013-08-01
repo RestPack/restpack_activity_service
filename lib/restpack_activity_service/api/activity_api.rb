@@ -17,7 +17,7 @@ module RestPack
     def application_params
       #TODO: application_id may come from a domain mapping
       {
-        application_id: RestPack::Activity::configuration.application_id
+        application_id: RestPack::Activity::Service::configuration.application_id
       }
     end
 
