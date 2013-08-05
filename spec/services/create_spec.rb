@@ -83,25 +83,25 @@ describe RestPack::Services::Activity::Create do
         end
       end
 
-      # context 'when latitude is present, but longitude is not present' do
-      #   let(:latititude) { 123.45 }
-      #   let(:longitude) { nil }
+      context 'when latitude is present, but longitude is not present' do
+        let(:latititude) { 123.45 }
+        let(:longitude) { nil }
 
-      #   it 'should return a validation error' do
-      #     response.success?.should == false
-      #     response.errors["base"].should == ["Both Latitude and Longitude are required"]
-      #   end
-      # end
+        it 'should return a validation error' do
+          response.success?.should == false
+          response.errors["base"].should == ["Both Latitude and Longitude are required"]
+        end
+      end
 
-      # context 'when latitude is not present, but longitude is present' do
-      #   let(:latititude) { nil }
-      #   let(:longitude) { 90.1 }
+      context 'when latitude is not present, but longitude is present' do
+        let(:latititude) { nil }
+        let(:longitude) { 90.1 }
 
-      #   it 'should return a validation error' do
-      #     response.success?.should == false
-      #     response.errors["base"].should == ["Both Latitude and Longitude are required"]
-      #   end
-      # end
+        it 'should return a validation error' do
+          response.success?.should == false
+          response.errors["base"].should == ["Both Latitude and Longitude are required"]
+        end
+      end
 
     end
   end
