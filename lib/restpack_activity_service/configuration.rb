@@ -4,7 +4,6 @@ module RestPack::Activity::Service
 
     def initialize
       @database_table_prefix = "restpack_"
-      @application_id = 1
     end
 
     def prefix_table_name(name)

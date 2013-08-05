@@ -30,7 +30,7 @@ describe RestPack::Services::Activity::Get do
 
     it 'is unsuccessful' do
       response.success?.should == false
-      response.result.should == nil
+      response.result.should == {}
       response.status.should == :not_found
     end
   end

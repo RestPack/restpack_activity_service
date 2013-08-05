@@ -10,6 +10,14 @@ module RestPack
       render RestPack::Services::Activity::Get.run(params, application_params)
     end
 
+    post "/.json" do
+      render RestPack::Services::Activity::Create.run(params, application_params)
+    end
+
+    put "/:id.json" do
+      render RestPack::Services::Activity::Update.run(params, application_params)
+    end
+
     #TODO: the rest of rest
 
     private
@@ -17,14 +25,15 @@ module RestPack
     def application_params
       #TODO: application_id may come from a domain mapping
       {
-        application_id: RestPack::Activity::Service::configuration.application_id
+        application_id: 1
       }
     end
 
     def render(response)
-      #TODO: set headers and status
+      p response
 
       #TODO: move this logic into response
+      status response.code
       response.result[:errors] = response.errors
       response.result.to_json
     end
