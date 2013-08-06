@@ -18,7 +18,9 @@ module RestPack
       render RestPack::Services::Activity::Update.run(params, application_params)
     end
 
-    #TODO: the rest of rest
+    delete "/:id.json" do
+      render RestPack::Services::Activity::Destroy.run(params, application_params)
+    end
 
     private
 
@@ -31,10 +33,11 @@ module RestPack
 
     def render(response)
       p response
+      status response.code
 
       #TODO: move this logic into response
-      status response.code
       response.result[:errors] = response.errors
+
       response.result.to_json
     end
   end

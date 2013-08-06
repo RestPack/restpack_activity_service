@@ -1,5 +1,5 @@
 module RestPack::Services::Activity
-  class Delete < RestPack::Service
+  class Destroy < RestPack::Service
     required do
       integer :id
       integer :application_id

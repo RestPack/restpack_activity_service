@@ -1,6 +1,6 @@
 require_relative '../spec_helper'
 
-describe RestPack::Services::Activity::Delete do
+describe RestPack::Services::Activity::Destroy do
   is_required :id, :application_id
 
   let(:response) { subject.class.run(params) }
