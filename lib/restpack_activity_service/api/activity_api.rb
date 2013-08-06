@@ -32,12 +32,8 @@ module RestPack
     end
 
     def render(response)
-      p response
       status response.code
-
-      #TODO: move this logic into response
       response.result[:errors] = response.errors
-
       response.result.to_json
     end
   end
