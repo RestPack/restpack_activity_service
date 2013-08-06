@@ -18,13 +18,15 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  # spec.add_dependency "restpack_service",       "~> 0.0.3"
+  spec.add_dependency "restpack_service",       "~> 0.0.25"
   spec.add_dependency "restpack_serializer",    "~> 0.4.1"
+  spec.add_dependency "restpack_gem",           "~> 0.0.9"
   spec.add_dependency "sinatra",                "~> 1.4.3"
   spec.add_dependency "pg",                     "~> 0.15.1"
 
   spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
   spec.add_development_dependency "database_cleaner", "~> 1.0.1"
+  spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
+  spec.add_development_dependency "bump"
 end

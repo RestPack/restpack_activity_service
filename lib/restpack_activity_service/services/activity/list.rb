@@ -1,5 +1,5 @@
 module RestPack::Services::Activity
-  class List < RestPack::Service
+  class List < RestPack::Service::Command
     required do
       integer :application_id
     end

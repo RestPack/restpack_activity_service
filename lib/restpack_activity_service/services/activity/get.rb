@@ -1,5 +1,5 @@
 module RestPack::Services::Activity
-  class Get < RestPack::Service
+  class Get < RestPack::Service::Command
     required do
       integer :id
       integer :application_id

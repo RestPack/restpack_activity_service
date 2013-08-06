@@ -1,5 +1,5 @@
 module RestPack::Services::Activity
-  class Create < RestPack::Service
+  class Create < RestPack::Service::Command
     required do
       integer :application_id
       integer :user_id

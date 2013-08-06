@@ -1,5 +1,5 @@
 module RestPack::Services::Activity
-  class Update < RestPack::Service
+  class Update < RestPack::Service::Command
     required do
       integer :id
       integer :application_id

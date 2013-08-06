@@ -1,5 +1,5 @@
 module RestPack::Services::Activity
-  class Destroy < RestPack::Service
+  class Destroy < RestPack::Service::Command
     required do
       integer :id
       integer :application_id
