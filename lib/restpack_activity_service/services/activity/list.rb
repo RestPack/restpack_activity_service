@@ -1,4 +1,4 @@
-module RestPack::Services::Activity
+module RestPack::Activity::Service::Commands::Activity
   class List < RestPack::Service::Command
     required do
       integer :application_id
@@ -14,7 +14,7 @@ module RestPack::Services::Activity
     end
 
     def execute
-      scope = RestPack::Activity::Service::Models::Activity.all
+      scope = Models::Activity.all
       scope = scope.where(application_id: application_id)
 
       scope = scope.where(user_id: user_id) if user_id
@@ -22,7 +22,7 @@ module RestPack::Services::Activity
       scope = scope.any_tags_csv(access, :access) if access
       scope = scope.search(query) if query
 
-      RestPack::Activity::Service::Serializers::ActivitySerializer.resource(inputs, scope)
+      Serializers::ActivitySerializer.resource(inputs, scope)
     end
   end
 end

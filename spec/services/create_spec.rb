@@ -1,6 +1,6 @@
 require_relative '../spec_helper'
 
-describe RestPack::Services::Activity::Create do
+describe Commands::Activity::Create do
   is_required :application_id, :user_id, :content
   is_optional :title, :tags, :access, :latitude, :longitude
 

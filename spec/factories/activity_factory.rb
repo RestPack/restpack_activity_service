@@ -6,7 +6,7 @@ class ActivityFactory
       content: "This is the content ##{sequence}"
     })
 
-    RestPack::Services::Activity::Create.run!(params)
+    RestPack::Activity::Service::Commands::Activity::Create.run!(params)
   end
 
   private

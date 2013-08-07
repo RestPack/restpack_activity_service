@@ -1,4 +1,4 @@
-module RestPack::Services::Activity
+module RestPack::Activity::Service::Commands::Activity
   class Create < RestPack::Service::Command
     required do
       integer :application_id
@@ -33,8 +33,8 @@ module RestPack::Services::Activity
     end
 
     def execute
-      activity = RestPack::Activity::Service::Models::Activity.create(inputs)
-      RestPack::Activity::Service::Serializers::ActivitySerializer.as_json(activity)
+      activity = Models::Activity.create(inputs)
+      Serializers::ActivitySerializer.as_json(activity)
     end
   end
 end

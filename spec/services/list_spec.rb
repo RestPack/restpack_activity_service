@@ -1,6 +1,6 @@
 require_relative '../spec_helper'
 
-describe RestPack::Services::Activity::List do
+describe Commands::Activity::List do
   is_required :application_id
   is_optional :user_id, :page, :page_size, :tags, :access, :query
 
@@ -46,7 +46,7 @@ describe RestPack::Services::Activity::List do
       context 'valid' do
         let(:params) { { application_id: 100 } }
         it 'retuns activities' do
-          response.result[:meta][:activities][:count].should == RestPack::Activity::Service::Models::Activity.count
+          response.result[:meta][:activities][:count].should == Models::Activity.count
         end
       end
 
@@ -63,7 +63,7 @@ describe RestPack::Services::Activity::List do
         let(:params) { { application_id: 100, user_id: 200 }}
 
         it 'returns activities' do
-          response.result[:meta][:activities][:count].should == RestPack::Activity::Service::Models::Activity.count
+          response.result[:meta][:activities][:count].should == Models::Activity.count
         end
       end
 

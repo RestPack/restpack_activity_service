@@ -3,23 +3,23 @@ require 'sinatra'
 module RestPack
   class ActivityApi < Sinatra::Base
     get "/.json" do
-      render RestPack::Services::Activity::List.run(params, application_params)
+      render RestPack::Activity::Service::Commands::Activity::List.run(params, application_params)
     end
 
     get "/:id.json" do
-      render RestPack::Services::Activity::Get.run(params, application_params)
+      render RestPack::Activity::Service::Commands::Activity::Get.run(params, application_params)
     end
 
     post "/.json" do
-      render RestPack::Services::Activity::Create.run(params, application_params)
+      render RestPack::Activity::Service::Commands::Activity::Create.run(params, application_params)
     end
 
     put "/:id.json" do
-      render RestPack::Services::Activity::Update.run(params, application_params)
+      render RestPack::Activity::Service::Commands::Activity::Update.run(params, application_params)
     end
 
     delete "/:id.json" do
-      render RestPack::Services::Activity::Destroy.run(params, application_params)
+      render RestPack::Activity::Service::Commands::Activity::Destroy.run(params, application_params)
     end
 
     private

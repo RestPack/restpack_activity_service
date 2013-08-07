@@ -1,4 +1,4 @@
-module RestPack::Services
+module RestPack::Activity::Service::Commands
 
 end
 

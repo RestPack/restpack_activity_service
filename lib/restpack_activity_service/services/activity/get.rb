@@ -1,4 +1,4 @@
-module RestPack::Services::Activity
+module RestPack::Activity::Service::Commands::Activity
   class Get < RestPack::Service::Command
     required do
       integer :id
@@ -6,13 +6,13 @@ module RestPack::Services::Activity
     end
 
     def execute
-      activity = RestPack::Activity::Service::Models::Activity.find_by_id_and_application_id(
+      activity = Models::Activity.find_by_id_and_application_id(
         inputs[:id],
         inputs[:application_id]
       )
 
       if activity
-        RestPack::Activity::Service::Serializers::ActivitySerializer.as_json(activity)
+        Serializers::ActivitySerializer.as_json(activity)
       else
         status :not_found
       end

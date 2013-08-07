@@ -1,6 +1,6 @@
 require_relative '../spec_helper'
 
-describe RestPack::Services::Activity::Destroy do
+describe Commands::Activity::Destroy do
   is_required :id, :application_id
 
   let(:response) { subject.class.run(params) }
@@ -19,7 +19,7 @@ describe RestPack::Services::Activity::Destroy do
     it 'deletes the activity' do
       response.success?.should == true
       response.result.should == {}
-      RestPack::Services::Activity::Get.run(params).status.should == :not_found
+      Commands::Activity::Get.run(params).status.should == :not_found
     end
   end
 

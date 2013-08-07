@@ -12,3 +12,7 @@ require "restpack_activity_service/services"
 require "restpack_activity_service/tasks"
 
 require "restpack_activity_service/api/activity_api"
+
+Models = RestPack::Activity::Service::Models
+Commands = RestPack::Activity::Service::Commands
+Serializers = RestPack::Activity::Service::Serializers
