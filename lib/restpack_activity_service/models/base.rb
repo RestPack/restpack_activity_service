@@ -3,7 +3,7 @@ module RestPack::Models
     self.abstract_class = true
 
     def self.restpack_table_name(name)
-      self.table_name = RestPack::Activity::Service.configuration.prefix_table_name(name)
+      self.table_name = RestPack::Activity::Service.config.prefix_db_table(name)
     end
   end
 end

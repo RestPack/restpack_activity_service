@@ -1,24 +1,13 @@
 module RestPack::Activity::Service
-  class Configuration
-    attr_accessor :database_table_prefix, :application_id
+  class Configuration < RestPack::Service::Configuration
+    attr_accessor :application_id
 
-    def initialize
-      @database_table_prefix = "restpack_"
-    end
-
-    def prefix_table_name(name)
-      "#{@database_table_prefix}#{name}".to_sym
-    end
   end
 
-  class << self
-    attr_accessor :configuration
-  end
+  mattr_accessor :config
+  @@config = Configuration.new
 
-  def self.configure
-    self.configuration ||= Configuration.new
-    yield configuration if block_given?
+  def self.setup
+    yield @@config
   end
-
-  self.configure
 end
