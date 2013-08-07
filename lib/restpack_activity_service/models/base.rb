@@ -1,4 +1,4 @@
-module RestPack::Models
+module RestPack::Activity::Service::Models
   class Base < ActiveRecord::Base
     self.abstract_class = true
 

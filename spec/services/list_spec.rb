@@ -46,7 +46,7 @@ describe RestPack::Services::Activity::List do
       context 'valid' do
         let(:params) { { application_id: 100 } }
         it 'retuns activities' do
-          response.result[:meta][:activities][:count].should == RestPack::Models::Activity.count
+          response.result[:meta][:activities][:count].should == RestPack::Activity::Service::Models::Activity.count
         end
       end
 
@@ -63,7 +63,7 @@ describe RestPack::Services::Activity::List do
         let(:params) { { application_id: 100, user_id: 200 }}
 
         it 'returns activities' do
-          response.result[:meta][:activities][:count].should == RestPack::Models::Activity.count
+          response.result[:meta][:activities][:count].should == RestPack::Activity::Service::Models::Activity.count
         end
       end
 

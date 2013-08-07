@@ -4,6 +4,7 @@ require "restpack_serializer"
 
 require "restpack_activity_service/version"
 require "restpack_activity_service/configuration"
+require "restpack_activity_service/models/base"
 require "restpack_activity_service/models/activity"
 
 require "restpack_activity_service/serializers/activity_serializer"

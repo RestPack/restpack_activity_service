@@ -33,8 +33,8 @@ module RestPack::Services::Activity
     end
 
     def execute
-      activity = RestPack::Models::Activity.create(inputs)
-      RestPack::Serializers::ActivitySerializer.as_json(activity)
+      activity = RestPack::Activity::Service::Models::Activity.create(inputs)
+      RestPack::Activity::Service::Serializers::ActivitySerializer.as_json(activity)
     end
   end
 end

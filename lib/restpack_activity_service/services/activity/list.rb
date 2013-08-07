@@ -14,7 +14,7 @@ module RestPack::Services::Activity
     end
 
     def execute
-      scope = RestPack::Models::Activity.all
+      scope = RestPack::Activity::Service::Models::Activity.all
       scope = scope.where(application_id: application_id)
 
       scope = scope.where(user_id: user_id) if user_id
@@ -22,7 +22,7 @@ module RestPack::Services::Activity
       scope = scope.any_tags_csv(access, :access) if access
       scope = scope.search(query) if query
 
-      RestPack::Serializers::ActivitySerializer.resource(inputs, scope)
+      RestPack::Activity::Service::Serializers::ActivitySerializer.resource(inputs, scope)
     end
   end
 end

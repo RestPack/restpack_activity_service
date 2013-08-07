@@ -1,6 +1,4 @@
-require_relative 'base'
-
-module RestPack::Models
+module RestPack::Activity::Service::Models
   class Activity < Base
     self.restpack_table_name :activities
 
