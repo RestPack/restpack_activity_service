@@ -3,33 +3,32 @@ require 'sinatra'
 module RestPack::Activity::Service::Api
   class Activity < Sinatra::Base
     get "/.json" do
-      render Commands::Activity::List.run(params, application_params)
+      render Commands::Activity::List.run(params, application_params(request))
     end
 
     get "/:id.json" do
-      render Commands::Activity::Get.run(params, application_params)
+      render Commands::Activity::Get.run(params, application_params(request))
     end
 
     post "/.json" do
-      render Commands::Activity::Create.run(params, application_params)
+      render Commands::Activity::Create.run(params, application_params(request))
     end
 
     put "/:id.json" do
-      render Commands::Activity::Update.run(params, application_params)
+      render Commands::Activity::Update.run(params, application_params(request))
     end
 
     delete "/:id.json" do
-      render Commands::Activity::Destroy.run(params, application_params)
+      render Commands::Activity::Destroy.run(params, application_params(request))
     end
 
-    private
-
-    def application_params
-      #TODO: application_id may come from a domain mapping
+    def application_params(request)
       {
         application_id: 1
       }
     end
+
+    private
 
     def render(response)
       status response.code
