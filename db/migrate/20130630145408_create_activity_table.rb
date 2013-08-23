@@ -1,6 +1,6 @@
 class CreateActivityTable < ActiveRecord::Migration
   def table_name
-    RestPack::Activity::Service.config.prefix_db_table(:activities)
+    :restpack_activities
   end
 
   def up
