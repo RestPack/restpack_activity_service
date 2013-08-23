@@ -1,10 +1,8 @@
-require_relative 'factories/activity_factory'
-require_relative 'support/mutations_matchers'
-
-require 'rspec'
-require 'database_cleaner'
-require 'yaml'
+require 'restpack_service/support/spec_helper'
 require 'restpack_activity_service'
+
+require_relative 'factories/activity_factory'
+
 require 'coveralls'
 Coveralls.wear!
 
