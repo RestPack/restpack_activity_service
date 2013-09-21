@@ -1,8 +1,8 @@
 module RestPack::Activity::Service::Serializers
-  class ActivitySerializer
+  class Activity
     include RestPack::Serializer
 
-    self.model_class = RestPack::Activity::Service::Models::Activity
+    self.model_class = Models::Activity
     self.key = :activities
 
     attributes :id, :application_id, :user_id, :title, :content, :latitude, :longitude,
