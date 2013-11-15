@@ -1,8 +1,6 @@
 require 'restpack_service/support/spec_helper'
 require 'restpack_activity_service'
 
-require_relative 'factories/activity_factory'
-
 require 'coveralls'
 Coveralls.wear!
 
@@ -13,9 +11,13 @@ migrations_path = File.dirname(__FILE__) + "/../db/migrate"
 migrator = ActiveRecord::Migrator.new(:up, migrations_path)
 migrator.migrate
 
+FactoryGirl.find_definitions
+
 DatabaseCleaner.strategy = :transaction
 
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
+
   config.before(:each) do
     DatabaseCleaner.start
   end

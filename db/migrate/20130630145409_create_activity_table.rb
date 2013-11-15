@@ -1,6 +1,6 @@
 class CreateActivityTable < ActiveRecord::Migration
   def table_name
-    :restpack_activities
+    :restpack_activity_activities
   end
 
   def up

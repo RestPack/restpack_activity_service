@@ -1,9 +1,0 @@
-module RestPack::Activity::Service::Commands
-
-end
-
-require "restpack_activity_service/services/activity/list"
-require "restpack_activity_service/services/activity/create"
-require "restpack_activity_service/services/activity/get"
-require "restpack_activity_service/services/activity/update"
-require "restpack_activity_service/services/activity/destroy"

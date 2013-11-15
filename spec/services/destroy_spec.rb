@@ -1,13 +1,13 @@
-require_relative '../spec_helper'
+require 'spec_helper'
 
-describe Commands::Activity::Destroy do
+describe Commands::Activities::Activity::Destroy do
   is_required :id, :application_id
 
   let(:response) { subject.class.run(params) }
   let(:params) { {} }
 
   before do
-    @activity = ActivityFactory.create({ application_id: 100, title: 'test activity' })
+    @activity = create(:activity, application_id: 100, title: 'test activity' )
   end
 
   context 'with valid params' do
@@ -19,7 +19,7 @@ describe Commands::Activity::Destroy do
     it 'deletes the activity' do
       response.success?.should == true
       response.result.should == {}
-      Commands::Activity::Get.run(params).status.should == :not_found
+      Commands::Activities::Activity::Get.run(params).status.should == :not_found
     end
   end
 

@@ -1,25 +1,25 @@
-require_relative '../spec_helper'
+require 'spec_helper'
 
-describe Commands::Activity::List do
+describe Commands::Activities::Activity::List do
   is_required :application_id
   is_optional :user_id, :page, :page_size, :tags, :access, :query
 
   before do
-    ActivityFactory.create({
+    create(:activity,
       application_id: 100, user_id: 200, title: 'Achievement Unlocked 1',
       content: 'Three in a row! You have unlocked the "three-in-a-row" achievement.',
       tags: 'achievement,three in a row',
       access: 'user:100,group:300'
-    })
+    )
 
-    ActivityFactory.create({
+    create(:activity,
       application_id: 100, user_id: 200, title: 'Achievement Unlocked 2',
       content: 'Five in a row! You have unlocked the "five-in-a-row" achievement.',
       tags: 'achievement,five in a row',
       access: 'user:100,group:300'
-    })
+    )
 
-    ActivityFactory.create({
+    create(:activity,
       application_id: 100, user_id: 200, title: '3 Photos Uploaded',
       content: '3 photos have been uploaded',
       tags: 'photos',
@@ -27,16 +27,16 @@ describe Commands::Activity::List do
       data: {
         photos: ['1.png', '2.png', '3.png']
       }
-    })
+    )
 
-    ActivityFactory.create({
+    create(:activity,
       application_id: 100, user_id: 200, title: 'Check In: Eatery120',
       content: 'You checked in to Eatery 130, Ranelagh, Dublin 6',
       tags: 'checkin,eatery120,ranelagh,dublin',
       access: 'user:100,public',
       latitude: 53.324577,
       longitude: -6.254193
-    })
+    )
   end
 
   context 'listing activities' do
@@ -46,7 +46,7 @@ describe Commands::Activity::List do
       context 'valid' do
         let(:params) { { application_id: 100 } }
         it 'retuns activities' do
-          response.result[:meta][:activities][:count].should == Models::Activity.count
+          response.result[:meta][:activities][:count].should == Models::Activities::Activity.count
         end
       end
 
@@ -63,7 +63,7 @@ describe Commands::Activity::List do
         let(:params) { { application_id: 100, user_id: 200 }}
 
         it 'returns activities' do
-          response.result[:meta][:activities][:count].should == Models::Activity.count
+          response.result[:meta][:activities][:count].should == Models::Activities::Activity.count
         end
       end
 

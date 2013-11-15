@@ -1,6 +1,8 @@
-require_relative '../spec_helper'
+require 'spec_helper'
 
-describe Commands::Activity::Create do
+describe Commands::Activities::Activity::Create do
+  it_acts_as_single_create_command(:activities, :activity)
+
   is_required :application_id, :user_id, :content
   is_optional :title, :tags, :access, :latitude, :longitude
 

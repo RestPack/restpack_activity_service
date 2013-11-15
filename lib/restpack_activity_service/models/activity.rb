@@ -1,6 +1,6 @@
-module RestPack::Activity::Service::Models
+module Models::Activities
   class Activity < ActiveRecord::Base
-    self.table_name = :restpack_activities
+    self.table_name = :restpack_activity_activities
 
     def self.search(query)
       conditions = <<-EOS
