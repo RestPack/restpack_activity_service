@@ -2,6 +2,9 @@ module Models::Activities
   class Activity < ActiveRecord::Base
     self.table_name = :restpack_activity_activities
 
+    attr_accessible :application_id, :user_id, :title, :content,
+                    :latitude, :longitude, :data, :tags, :access
+
     def self.search(query)
       conditions = <<-EOS
         search_vector @@ plainto_tsquery('english', ?)

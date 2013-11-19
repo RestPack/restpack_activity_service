@@ -22,6 +22,7 @@ module Commands::Activities::Activity
         end
       end
 
+      #TEMP: GJ: some example service errors
       if title == "error"
         service_error "This is a service error"
       end
