@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Commands::Activities::Activity::List do
+describe Activity::Commands::Activity::List do
   is_required :application_id
   is_optional :user_id, :page, :page_size, :tags, :access, :query
 
@@ -46,7 +46,7 @@ describe Commands::Activities::Activity::List do
       context 'valid' do
         let(:params) { { application_id: 100 } }
         it 'retuns activities' do
-          response.result[:meta][:activities][:count].should == Models::Activities::Activity.count
+          response.result[:meta][:activities][:count].should == Activity::Models::Activity.count
         end
       end
 
@@ -63,7 +63,7 @@ describe Commands::Activities::Activity::List do
         let(:params) { { application_id: 100, user_id: 200 }}
 
         it 'returns activities' do
-          response.result[:meta][:activities][:count].should == Models::Activities::Activity.count
+          response.result[:meta][:activities][:count].should == Activity::Models::Activity.count
         end
       end
 

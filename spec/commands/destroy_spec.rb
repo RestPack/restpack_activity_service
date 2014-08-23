@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Commands::Activities::Activity::Destroy do
+describe Activity::Commands::Activity::Destroy do
   is_required :id, :application_id
 
   let(:response) { subject.class.run(params) }
@@ -19,7 +19,7 @@ describe Commands::Activities::Activity::Destroy do
     it 'deletes the activity' do
       response.success?.should == true
       response.result.should == {}
-      Commands::Activities::Activity::Get.run(params).status.should == :not_found
+      Activity::Commands::Activity::Get.run(params).status.should == :not_found
     end
   end
 

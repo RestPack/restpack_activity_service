@@ -1,4 +1,4 @@
-module Models::Activities
+module Activity::Models
   class Activity < ActiveRecord::Base
     self.table_name = :restpack_activity_activities
 

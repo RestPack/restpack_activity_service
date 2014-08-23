@@ -9,5 +9,6 @@ This gem provides a service for managing lists of activities. It supports full t
 ## Development Setup
 
 1. install postgres
-2. create a `restpack_activity_service_test` database
-3. rake
+2. `bundle install`
+3. `rake db:create`
+4. `rake test`

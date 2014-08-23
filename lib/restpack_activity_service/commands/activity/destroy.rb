@@ -1,4 +1,4 @@
-module Commands::Activities::Activity
+module Activity::Commands::Activity
   class Destroy < RestPack::Service::Command
     required do
       integer :id
@@ -6,7 +6,7 @@ module Commands::Activities::Activity
     end
 
     def execute
-      activity = Models::Activities::Activity.find_by_id_and_application_id(
+      activity = Model.find_by_id_and_application_id(
         inputs[:id],
         inputs[:application_id]
       )
