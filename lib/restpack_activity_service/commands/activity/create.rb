@@ -1,5 +1,5 @@
-module Commands::Activities::Activity
-  class Create < RestPack::Service::Commands::SingleCreate
+module Activity::Commands::Activity
+  class Create < RestPack::Service::Command
     required do
       integer :application_id
       integer :user_id
@@ -30,6 +30,11 @@ module Commands::Activities::Activity
       if title == "custom"
         field_error :title, "Title should not be 'custom'"
       end
+    end
+
+    def execute
+      model = Model.create!(inputs)
+      Serializer.as_json(model)
     end
   end
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Commands::Activities::Activity::Get do
+describe Activity::Commands::Activity::Get do
   is_required :id, :application_id
 
   let(:response) { subject.class.run(params) }
@@ -18,7 +18,7 @@ describe Commands::Activities::Activity::Get do
 
     it 'returns the correct activity' do
       response.success?.should == true
-      response.result.should == Serializers::Activities::Activity.resource(@activity)
+      response.result.should == Activity::Serializers::Activity.resource(@activity)
     end
   end
 
